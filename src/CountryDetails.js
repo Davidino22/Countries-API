@@ -6,11 +6,10 @@ function CountryDetails() {
   const { id } = useParams();
 
   useEffect(() => {
-    console.log(id);
     fetch(`https://restcountries.com/v2/alpha/${id}`)
       .then((response) => response.json())
       .then((data) => setCountryData(data));
-  }, []);
+  }, [id]);
 
   return (
     <>

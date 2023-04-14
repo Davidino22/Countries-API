@@ -1,0 +1,19 @@
+.input {
+  width: 400px;
+  height: 40px;
+}
+
+.select {
+  width: 200px;
+  height: 40px;
+  margin-left: 50px;
+  margin-bottom: 50px;
+  margin-left: 20px;
+}
+
+.header {
+  border-bottom: 2px solid;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}

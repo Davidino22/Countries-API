@@ -5,16 +5,19 @@ import { Link } from 'react-router-dom';
 export default function CountryCard(props) {
   const { name, flag, population, region, capital, alpha } = props;
   return (
-    <Link to={`/${alpha}`}>
-      <div className="card">
-        <div className="flag">
-          <img src={flag} alt="flag"></img>
-        </div>
-        <p>{name}</p>
-        <p>{population}</p>
-        <p>{region}</p>
-        <p>{capital}</p>
+    <div className="card">
+      <div className="flag">
+        <Link to={`/${alpha}`}>
+          {' '}
+          <img src={flag} alt="flag"></img>{' '}
+        </Link>
       </div>
-    </Link>
+      <div className="cardText">
+        <p className="name">{name}</p>
+        <p> population:{population}</p>
+        <p> region:{region}</p>
+        <p> capital: {capital}</p>
+      </div>
+    </div>
   );
 }

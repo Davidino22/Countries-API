@@ -1,11 +1,9 @@
 import axios from 'axios';
 
-import { Route, Routes } from 'react-router-dom';
-
 import React, { useEffect, useState } from 'react';
 import CountryCard from './CountryCard';
 import Header from './Header';
-import CountryDetails from './CountryDetails';
+
 import './Home.css';
 
 export default function Home() {
@@ -14,14 +12,13 @@ export default function Home() {
   const [input, setInput] = useState('');
   const [filteredCountries, setFilteredCountries] = useState([]);
   const [region, setRegion] = useState('');
-  const [selectedCountry, setSelectedCountry] = useState(null);
 
   useEffect(() => {
     const filter = countries.filter((country) => {
       if (country.name.toLowerCase().includes(input.toLowerCase())) {
         if (country.region === region) return country;
       }
-    });
+    },[]);
 
     setFilteredCountries(filter);
   }, [input, region]);
@@ -42,10 +39,6 @@ export default function Home() {
 
   function handleSelectChange(e) {
     setRegion(e.target.value);
-  }
-
-  function clickCard(country) {
-    setSelectedCountry(country);
   }
 
   return (
