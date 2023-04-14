@@ -2,13 +2,17 @@ import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 
 function CountryDetails() {
-  const [countryData, setCountryData] = useState(null);
+  const [countryData, setCountryData] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
     fetch(`https://restcountries.com/v2/alpha/${id}`)
       .then((response) => response.json())
-      .then((data) => setCountryData(data));
+
+      .then((data) => {
+        console.log(data);
+        setCountryData(data);
+      });
   }, [id]);
 
   return (
@@ -25,11 +29,13 @@ function CountryDetails() {
 
           <ul>
             Borders:
-            {countryData.borders.map((code) => (
-              <li key={code}>
-                <Link to={`/${code}`}> {code}</Link>
-              </li>
-            ))}
+            {countryData.borders
+              ? countryData.borders.map((code) => (
+                  <li key={code}>
+                    <Link to={`/${code}`}> {code}</Link>
+                  </li>
+                ))
+              : null}
           </ul>
         </div>
       )}
